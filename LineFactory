@@ -1,0 +1,97 @@
+package oop.ex6.line;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * 
+ * @author roau78, shahar3000
+ *
+ *         Generates new Line
+ */
+public class LineFactory {
+
+	/**
+	 * 
+	 * @author roau78, shahar3000
+	 *
+	 *         Each object is a line type
+	 */
+	/*
+	 * I decided to implements LineType inside LineFactory so that a future
+	 * adding of line type will cause changing only this class
+	 */
+	enum LineType implements LineEnums {
+		VARIABLE_DECLARATION(""), METHOD_DECLARATION(""), VARIABLE_UPDATE(""), CALL_METHOD(
+				""), CONDITION(""), SCOPE_CLOSE(""),RETURN("");
+
+		private final Pattern p;
+
+		/**
+		 * 
+		 * @param lineRegex
+		 *            - the regex of a line type
+		 */
+		LineType(String lineRegex) {
+			this.p = Pattern.compile(lineRegex);
+		}
+
+		/**
+		 * 
+		 * @param stringToCheck
+		 *            - a String that represent a word
+		 * @return true if the string is representing this line type or false
+		 *         otherwise
+		 */
+		boolean isTypeOf(String stringToCheck) {
+			return p.matcher(stringToCheck).matches();
+		}
+
+		/**
+		 * 
+		 * @param stringToCheck
+		 *            - string that represent a line input
+		 * @return the result of a match to a line type
+		 */
+		Matcher getMatcher(String stringToCheck) {
+			return p.matcher(stringToCheck);
+		}
+	}
+
+	/**
+	 * 
+	 * @param stringToCheck
+	 *            - an input to initialize a Line
+	 * @return - a new Line
+	 * @throws SyntaxException
+	 *             - thrown if stringToCheck has a bad syntax or not
+	 *             representing any lineType
+	 */
+	static Line produceLine(String stringToCheck) throws SyntaxException {
+		if (LineType.VARIABLE_DECLARATION.isTypeOf(stringToCheck)) {
+			return new VariableDeclaration(
+					LineType.VARIABLE_DECLARATION.getMatcher(stringToCheck));
+		} else if (LineType.METHOD_DECLARATION.isTypeOf(stringToCheck)) {
+			return new MethodDeclaration(
+					LineType.METHOD_DECLARATION.getMatcher(stringToCheck));
+		} else if (LineType.VARIABLE_UPDATE.isTypeOf(stringToCheck)) {
+			return new VariableUpdate(
+					LineType.VARIABLE_UPDATE.getMatcher(stringToCheck));
+		} else if (LineType.CALL_METHOD.isTypeOf(stringToCheck)) {
+			return new CallMethod(
+					LineType.CALL_METHOD.getMatcher(stringToCheck));
+		} else if (LineType.CONDITION.isTypeOf(stringToCheck)) {
+			return new Condition(LineType.CONDITION.getMatcher(stringToCheck));
+		} else if (LineType.SCOPE_CLOSE.isTypeOf(stringToCheck)) {
+			return new ScopeClose(
+					LineType.SCOPE_CLOSE.getMatcher(stringToCheck));
+		} else {
+			throw new SyntaxException();
+		}
+		for(LineType i:LineType.values()){
+			if(i.isTypeOf(stringToCheck)){
+				h
+			}
+		}
+	}
+}
