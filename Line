@@ -1,0 +1,29 @@
+package oop.ex6.line;
+
+import java.util.regex.Matcher;
+
+import oop.ex6.line.LineFactory.LineType;
+import oop.ex6.workSpace.WorkSpace;
+
+/**
+ * 
+ * @author roau78, shahar3000
+ *
+ *         Line Class, represent a line in a program
+ */
+public interface Line {
+	/**
+	 * 
+	 * @return - the type of this line
+	 */
+	public LineType getLineType();
+
+	/**
+	 * 
+	 * @param ws
+	 *            - a WorkSpace object
+	 * @throws ExecuteException
+	 *             - thrown if failed to execute the line
+	 */
+	public void executeLine(WorkSpace ws) throws ExecuteException;
+}
