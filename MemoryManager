@@ -1,0 +1,55 @@
+
+/**
+ * This class represents the current memory of some s-java program.
+ */
+public class MemoryManager 
+{
+	private HashSet<Method> globalMethods;
+	private HashSet<Variable> globalVariables;
+	private Stack<HashSet<Variable>> localVariablesStack;
+
+	/**
+	 * Constructor
+	 */
+	public MemoryManager()
+	{
+		this.globalMethods = new HashSet<Method>();
+		this.globalVariables = new HashSet<Variable>();
+		this.localVariablesStack = new Stack<HashSet<Variable>>();
+	}
+
+
+	public boolean addGlobalMethod(Method method) 
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean addGlobalVariable(Variable variable) 
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public Method isMethodExist(String methodName)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public Variable isVariableExist(String variableName)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public void addNewLevelToStack()
+	{
+		// TODO Auto-generated method stub
+	}
+	
+	public void removeCurrentLevelFromStack()
+	{
+		// TODO Auto-generated method stub
+	}
+}
