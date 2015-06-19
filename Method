@@ -1,0 +1,31 @@
+package memory_management;
+
+
+public class Method
+{
+	private String name;
+	private Variable[] arguments;
+	
+	public Method(String name, Variable[] arguments)
+	{
+		this.name = name;
+		this.arguments = arguments;
+	}
+	
+	public boolean areArgumentsValid(Variable[] arguments)
+	{
+		//TODO
+		return false;
+	}
+	
+
+	public String getName() 
+	{
+		return name;
+	}
+
+	public Variable[] getArguments() 
+	{
+		return arguments;
+	}
+}
