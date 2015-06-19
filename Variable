@@ -1,3 +1,4 @@
+package memory_management;
 
 import line.Line;
 import line.VariableType;
@@ -8,7 +9,6 @@ public class Variable
 	private String name;
 	private boolean isInitialized;
 	private boolean isFinal;
-
 
 	
 	public Variable(VariableType type, String name, boolean isInitialized, boolean isFinal)
