@@ -1,40 +1,41 @@
 
+import line.Line;
+import line.VariableType;
+
 public class Variable 
 {
-	private String type;
+	private VariableType type;
 	private String name;
 	private boolean isInitialized;
 	private boolean isFinal;
-	// to check if it can be used in methods deceleration
-	private boolean isGlobal;
+
 
 	
-
-	public Variable(String type, String name, boolean isInitialized, boolean isFinal, boolean isGlobal)
+	public Variable(VariableType type, String name, boolean isInitialized, boolean isFinal)
 	{
 		this.type = type;
 		this.name = name;
 		this.isInitialized = isInitialized;
 		this.isFinal = isFinal;
-		this.isGlobal = isGlobal;
 	}
 
 	public Variable(Line curLine) 
 	{
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	public void setInitialized() 
+	{
+		this.isInitialized = true;
+	}
+	
 	public boolean isInitialized()
 	{
 		return isInitialized;
 	}
+
 	
-	public void setInitialized(boolean isInitialized) 
-	{
-		this.isInitialized = isInitialized;
-	}
-	
-	public String getType() 
+	public VariableType getType() 
 	{
 		return type;
 	}
@@ -49,8 +50,4 @@ public class Variable
 		return isFinal;
 	}
 
-	public boolean isGlobal()
-	{
-		return isGlobal;
-	}
 }
