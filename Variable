@@ -1,16 +1,20 @@
+package oop.ex6.workSpace;
+
+import lineComponents.VariableType;
+
 
 public class Variable 
 {
-	private String type;
-	private String name;
+	private VariableType type;
+	final private String name;
 	private boolean isInitialized;
-	private boolean isFinal;
+	final private boolean isFinal;
 	// to check if it can be used in methods deceleration
 	private boolean isGlobal;
 
 	
 
-	public Variable(String type, String name, boolean isInitialized, boolean isFinal, boolean isGlobal)
+	public Variable(VariableType type, String name, boolean isInitialized, boolean isFinal, boolean isGlobal)
 	{
 		this.type = type;
 		this.name = name;
@@ -19,22 +23,17 @@ public class Variable
 		this.isGlobal = isGlobal;
 	}
 
-	public Variable(Line curLine) 
-	{
-		// TODO Auto-generated constructor stub
-	}
-
 	public boolean isInitialized()
 	{
 		return isInitialized;
 	}
 	
-	public void setInitialized(boolean isInitialized) 
+	public void setInitialized() 
 	{
-		this.isInitialized = isInitialized;
+		this.isInitialized = true;
 	}
 	
-	public String getType() 
+	public VariableType getType() 
 	{
 		return type;
 	}
