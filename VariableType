@@ -1,0 +1,89 @@
+package lineComponents;
+
+import oop.ex6.line.LineEnums;
+
+/**
+ * 
+ * @author roau78, shahar3000
+ *
+ *         the variable types of a parameter
+ */
+public enum VariableType implements LineEnums {
+
+	INT(Constants.INT), DOUBLE(Constants.DOUBLE), BOOLEAN(Constants.BOOLEAN), CHAR(Constants.CHAR), STRING(
+			Constants.STRING);
+
+	final static VariableType[] ENUM_ARRAY = VariableType.values();
+	final static String ENUM_REGEX = LineUtils.generateEnumRegex(LineUtils
+			.enumTOStringArray(ENUM_ARRAY));
+	
+	// המשתנה הבא:
+	static String LEAGAL_INPUT;// = legalInputInitializer();
+
+	final String REGEX;
+
+	/**
+	 * 
+	 * @param regex
+	 *            - the regex of the this VariableType
+	 */
+	VariableType(String regex) {
+		this.REGEX = regex;
+		ReservedWords.add(this.toString().toLowerCase());
+	}
+
+	/**
+	 * 
+	 * @return the regex of this enum
+	 */
+	public static String getEnumRegex() {
+		return ENUM_REGEX;
+	}
+
+	/**
+	 * 
+	 * @return the input regex of this variable
+	 */
+	public String getInputRegex() {
+		return this.REGEX;
+	}
+
+	/**
+	 * 
+	 * @return the input regex for any possible variable
+	 */
+	/*
+	 * the legal input regex is a final static type and does not need further
+	 * modification so in order make it final I needed to initialize it at
+	 * declaration
+	 */
+	private static String legalInputInitializer() {
+		int length = ENUM_ARRAY.length;
+		String[] s = new String[length];
+		for (int i = 0; i < length; i++) {
+			s[i] = LineUtils.groupRegex(ENUM_ARRAY[i].getInputRegex());
+		}
+		return LineUtils.generateEnumRegex(s);
+	}
+
+	/**
+	 * 
+	 * @return the input regex for any possible variable
+	 */
+	public static String getLeagalInput() {
+		if(LEAGAL_INPUT==null){
+			int length = ENUM_ARRAY.length;
+			String[] s = new String[length];
+			for (int i = 0; i < length; i++) {
+				s[i] = LineUtils.groupRegex(ENUM_ARRAY[i].getInputRegex());
+			}
+			LEAGAL_INPUT= LineUtils.generateEnumRegex(s);
+		}
+		return LEAGAL_INPUT;
+	}
+
+	public static void main(String[] args) {
+		// System.out.println(ReservedWords.isReservedWord("false"));
+		System.out.println(VariableType.getLeagalInput());
+	}
+}
