@@ -40,7 +40,12 @@ public class MemoryManager
 		return null;
 	}
 
-
+	public boolean addVariables(Collection<Variable> variableCollection)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	//////////////////////////////////////////////////////////////////////////////
 	/// you dont need those: /// you dont need those: /// you dont need those: /// 
 	//////////////////////////////////////////////////////////////////////////////
